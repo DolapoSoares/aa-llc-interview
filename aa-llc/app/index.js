@@ -26,34 +26,35 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-semibold mb-4">
-        Welcome to the details of random people
-      </h1>
-      {data.map((item, index) => (
-        <div className="flex mb-4" key={index}>
-          <div className="w-1/2 p-4">
-            <img
-              src={item.picture.large}
-              alt={`${item.name.first} ${item.name.last}`}
-            />
+     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+      <div className="flex-1 p-4 max-w-screen-lg mx-auto bg-white rounded-lg shadow-xl">
+        <h1 className="text-2xl font-semibold mb-4">
+          Welcome to the details of random people
+        </h1>
+        {data.map((item, index) => (
+          <div className="flex mb-4" key={index}>
+            <div className="w-1/2 p-4 bg-blue-200 rounded-lg shadow-md">
+              <img
+                src={item.picture.large}
+                alt={`${item.name.first} ${item.name.last}`}
+                className="rounded-full w-40 h-40 mx-auto block"
+              />
+            </div>
+            <div className="w-1/2 p-4 bg-green-200 rounded-lg shadow-md">
+              <p className="text-lg font-semibold">
+                {item.name.title} {item.name.first} {item.name.last}
+              </p>
+              <p>Gender: {item.gender}</p>
+              <p>Email: {item.email}</p>
+              <p>Age: {item.dob.age}</p>
+              <p>Phone No: {item.cell}</p>
+              <p>
+                Address: {item.location.street.number}, {item.location.street.name}, {item.location.city}, {item.location.state}, {item.location.country}.
+              </p>
+            </div>
           </div>
-          <div className="w-1/2 p-4">
-            <p className="text-lg font-semibold">
-              {item.name.title} {item.name.first} {item.name.last}
-            </p>
-            <p>Gender: {item.gender}</p>
-            <p>Email: {item.email}</p>
-            <p>Age: {item.dob.age}</p>
-            <p>Phone No: {item.cell}</p>
-            <p>
-              Address: {item.location.street.number},{" "}
-              {item.location.street.name}, {item.location.city},{" "}
-              {item.location.state}, {item.location.country}.
-            </p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 };
