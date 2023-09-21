@@ -38,6 +38,7 @@ const Index = () => {
                 alt={`${item.name.first} ${item.name.last}`}
                 width={400}
                 height={400}
+                className="rounded-full"
               />
             </div>
             <div className="w-1/2 p-4 bg-green-200 rounded-lg shadow-md">
