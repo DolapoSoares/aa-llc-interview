@@ -1,7 +1,6 @@
 "use client";
-
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 const Index = () => {
   const [data, setData] = useState([]);
@@ -10,14 +9,14 @@ const Index = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await fetch("https://randomuser.me/api/"); // Replace with your API URL
+        const response = await fetch('https://randomuser.me/api/'); // Replace with your API URL
         const jsonData = await response.json();
         const results = jsonData.results;
 
         setData(results);
         setLoading(false);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        console.error('Error fetching data:', error);
         setLoading(false);
       }
     }
@@ -26,7 +25,7 @@ const Index = () => {
   }, []);
 
   return (
-     <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
       <div className="flex-1 p-4 max-w-screen-lg mx-auto bg-white rounded-lg shadow-xl">
         <h1 className="text-2xl font-semibold mb-4">
           Welcome to the details of random people
@@ -34,10 +33,11 @@ const Index = () => {
         {data.map((item, index) => (
           <div className="flex mb-4" key={index}>
             <div className="w-1/2 p-4 bg-blue-200 rounded-lg shadow-md">
-              <img
+              <Image
                 src={item.picture.large}
                 alt={`${item.name.first} ${item.name.last}`}
-                className="rounded-full w-40 h-40 mx-auto block"
+                width={400}
+                height={400}
               />
             </div>
             <div className="w-1/2 p-4 bg-green-200 rounded-lg shadow-md">
@@ -58,4 +58,5 @@ const Index = () => {
     </div>
   );
 };
+
 export default Index;
