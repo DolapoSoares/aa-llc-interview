@@ -1,8 +1,9 @@
 "use client";
 import React, { useEffect, useState } from 'react';
+import "../styles/style.css"
 import Image from 'next/image';
 
-const Index = () => {
+export default function Index(){
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -39,11 +40,11 @@ const Index = () => {
                 width={400}
                 height={400}
                 className="rounded-full"
+                loading="lazy"
               />
             </div>
             <div className="w-1/2 p-4 bg-green-200 rounded-lg shadow-md">
-              <p className="text-lg font-semibold">
-                {item.name.title} {item.name.first} {item.name.last}
+              <p className="text-lg font-semibold">Name : {item.name.title} {item.name.first} {item.name.last}
               </p>
               <p>Gender: {item.gender}</p>
               <p>Email: {item.email}</p>
@@ -59,5 +60,3 @@ const Index = () => {
     </div>
   );
 };
-
-export default Index;
